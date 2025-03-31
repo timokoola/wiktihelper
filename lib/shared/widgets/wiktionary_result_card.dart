@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wiktihelper/shared/models/wiktionary_result.dart';
+import 'package:wiktihelper/shared/services/share_service.dart';
 
 class WiktionaryResultCard extends StatelessWidget {
   final WiktionaryResult result;
@@ -60,6 +61,12 @@ class WiktionaryResultCard extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                ),
+                const SizedBox(width: 8),
+                IconButton(
+                  icon: const Icon(Icons.ios_share),
+                  onPressed: () => ShareService.shareWiktionaryResult(result),
+                  tooltip: 'Share Wiktionary link',
                 ),
               ],
             ),
