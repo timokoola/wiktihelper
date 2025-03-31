@@ -2,35 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:wiktihelper/shared/models/wiktionary_result.dart';
 import 'package:wiktihelper/shared/services/wiktionary_service.dart';
 
-class SearchBox extends StatefulWidget {
-  final Function(WiktionaryResult) onResult;
+class SearchBox extends StatelessWidget {
+  final Function(String) onSearch;
+  final bool isLoading;
 
   const SearchBox({
     Key? key,
-    required this.onResult,
+    required this.onSearch,
+    required this.isLoading,
   }) : super(key: key);
-
-  @override
-  State<SearchBox> createState() => _SearchBoxState();
-}
-
-class _SearchBoxState extends State<SearchBox> {
-  final _searchController = TextEditingController();
-  final _wiktionaryService = WiktionaryService();
-  bool _isLoading = false;
-
-  Future<void> _searchWord(String word) async {
-    if (word.isEmpty) return;
-
-    setState(() => _isLoading = true);
-    
-    try {
-      final result = await _wiktionaryService.searchWord(word);
-      widget.onResult(WiktionaryResult.fromJson(result));
-    } finally {
-      setState(() => _isLoading = false);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +28,12 @@ class _SearchBoxState extends State<SearchBox> {
         ],
       ),
       child: TextField(
-        controller: _searchController,
         autocorrect: false,
         enableSuggestions: false,
         textCapitalization: TextCapitalization.none,
         decoration: InputDecoration(
           hintText: 'Search for a word...',
-          prefixIcon: _isLoading
+          prefixIcon: isLoading
               ? const SizedBox(
                   width: 20,
                   height: 20,
@@ -72,23 +51,8 @@ class _SearchBoxState extends State<SearchBox> {
             vertical: 16,
           ),
         ),
-        onSubmitted: _searchWord,
-        onChanged: (value) {
-          if (value.isEmpty) {
-            widget.onResult(WiktionaryResult(
-              title: '',
-              extract: '',
-              source: '',
-            ));
-          }
-        },
+        onSubmitted: onSearch,
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _searchController.dispose();
-    super.dispose();
   }
 } 
