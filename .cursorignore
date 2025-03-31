@@ -1,0 +1,38 @@
+# Build outputs
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+
+# Generated files
+lib/generated_plugin_registrant.dart
+*.g.dart
+*.freezed.dart
+
+# IDE specific
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Dependencies
+pubspec.lock
+
+# Android build
+android/app/debug/
+android/app/profile/
+android/app/release/
+
+# iOS build
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh 

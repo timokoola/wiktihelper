@@ -1,0 +1,358 @@
+ You are a senior Dart programmer with experience in the Flutter framework and a preference for clean programming and design patterns.
+
+Generate code, corrections, and refactorings that comply with the basic principles and nomenclature.
+
+## Project specific guidelines
+
+# Airy & Floaty UI Specification
+
+## Design Philosophy
+The UI follows an "airy and floaty" aesthetic characterized by:
+- Generous whitespace
+- Subtle elevation effects
+- Light color palette
+- Minimal visual weight
+- Soft transitions and animations
+
+## Color Palette
+
+### Primary Colors
+- Background: `#FAFBFC` (nearly white with a hint of blue)
+- Primary: `#8BB9DD` (light sky blue)
+- Secondary: `#F0F5FF` (very light blue)
+- Accent: `#C2E7FF` (pale cyan)
+
+### Text Colors
+- Primary Text: `#334155` (dark slate gray)
+- Secondary Text: `#64748B` (medium slate gray)
+- Muted Text: `#94A3B8` (light slate gray)
+
+### Functional Colors
+- Success: `#A7F3D0` (mint green)
+- Warning: `#FDE68A` (pale yellow)
+- Error: `#FECACA` (light salmon)
+- Info: `#BAE6FD` (light blue)
+
+## Typography
+
+### Font Family
+- Primary: "Inter", sans-serif
+- Secondary/Accent: "Work Sans", sans-serif
+
+### Font Sizes
+- Headings:
+  - H1: 36px / 2.25rem (light: 300)
+  - H2: 30px / 1.875rem (light: 300)
+  - H3: 24px / 1.5rem (regular: 400)
+  - H4: 20px / 1.25rem (regular: 400)
+- Body:
+  - Large: 18px / 1.125rem
+  - Regular: 16px / 1rem
+  - Small: 14px / 0.875rem
+  - Tiny: 12px / 0.75rem
+
+### Line Height
+- Headings: 1.2
+- Body: 1.6
+
+## Spacing System
+A consistent 4px (0.25rem) base unit:
+- Tiny: 4px (0.25rem)
+- XSmall: 8px (0.5rem)
+- Small: 12px (0.75rem)
+- Medium: 16px (1rem)
+- Large: 24px (1.5rem)
+- XLarge: 32px (2rem)
+- XXLarge: 48px (3rem)
+- Huge: 64px (4rem)
+
+## Component Specifications
+
+### Cards
+- Background: White (`#FFFFFF`)
+- Border: None
+- Border Radius: 12px
+- Shadow: `0 4px 20px rgba(0, 0, 0, 0.04)`
+- Padding: Large (24px)
+- Transition: All properties 0.3s ease
+- Hover effect: Slight elevation increase - `0 8px 24px rgba(0, 0, 0, 0.06)`
+
+### Buttons
+- Height: 44px
+- Padding: Horizontal - Medium (16px)
+- Border Radius: 8px
+- Text: Bold, center-aligned
+- States:
+  - Default: Semi-transparent (85% opacity)
+  - Hover: Full opacity, slight scale (1.02)
+  - Active: Slight inward press (scale 0.98)
+  - Disabled: 40% opacity, no hover effects
+- Variants:
+  - Primary: Primary color background
+  - Secondary: White background with primary color border
+  - Ghost: No background, only text
+  - Text: Just text with hover underline
+
+### Input Fields
+- Height: 44px
+- Background: White
+- Border: 1px solid `rgba(100, 116, 139, 0.2)`
+- Border Radius: 8px
+- Padding: Horizontal - Medium (16px)
+- States:
+  - Focus: Subtle glow effect (box-shadow: `0 0 0 4px rgba(139, 185, 221, 0.2)`)
+  - Error: Error color border and subtle error glow
+  - Disabled: 10% gray background, 40% opacity text
+
+### Navigation
+- Top Navigation:
+  - Height: 72px
+  - Background: White with 98% opacity
+  - Backdrop filter: blur(8px)
+  - Border-bottom: 1px solid `rgba(226, 232, 240, 0.8)`
+  - Shadow: None or very subtle
+  
+- Sidebar:
+  - Width: 240px
+  - Background: White with 95% opacity
+  - Border-right: 1px solid `rgba(226, 232, 240, 0.8)`
+
+### Modals
+- Background: White
+- Border Radius: 16px
+- Shadow: `0 8px 32px rgba(0, 0, 0, 0.08)`
+- Animation: Fade in and slight scale up (from 0.95 to 1)
+- Backdrop: Dark with 40% opacity, blur effect (8px)
+- Close Button: Top-right corner, ghost style
+
+### Tabs
+- Indicator style (no boxes):
+  - Bottom border highlight for active tab
+  - Text color change for active tab
+- Transition: Smooth sliding of indicator (0.3s)
+
+### Dropdown Menus
+- Background: White
+- Border Radius: 8px
+- Shadow: `0 4px 16px rgba(0, 0, 0, 0.06)`
+- Animation: Subtle fade in and scale
+- Item hover: Very light background highlight (#F8FAFC)
+
+## Animation Guidelines
+
+### Transition Speeds
+- Fast: 150ms
+- Medium: 300ms
+- Slow: 500ms
+
+### Easing Functions
+- Default: ease-out
+- Enter: cubic-bezier(0.21, 1.02, 0.73, 1)
+- Exit: cubic-bezier(0.06, 0.71, 0.44, 1)
+
+### Animation Types
+- Fade: Opacity from 0 to 1
+- Scale: From 0.95 to 1 (subtle)
+- Slide: Move in from direction (20px offset)
+- Float: Subtle up/down motion (3-5px) with very slow cycle
+- Breathe: Very subtle scale (0.98-1.02) with slow cycle
+
+## Layout
+
+### Container Widths
+- Small: 640px max
+- Medium: 768px max
+- Large: 1024px max
+- XLarge: 1280px max
+
+### Grid System
+- 12-column grid
+- Gutters: Medium (16px)
+
+### Responsive Breakpoints
+- Mobile: < 640px
+- Tablet: 640px - 1024px
+- Desktop: > 1024px
+
+## Special UI Elements
+
+### Toast Notifications
+- Position: Top center or bottom center
+- Animation: Slide down/up and fade
+- Duration: 4 seconds
+- Border Radius: 8px
+- Shadow: `0 4px 12px rgba(0, 0, 0, 0.08)`
+
+### Progress Indicators
+- Linear: 4px height, rounded ends
+- Circular: 2px stroke width
+- Animation: Smooth fill
+
+### Iconography
+- Line style (not filled)
+- Stroke width: 1.5px
+- Size: 20px for standard, 16px for small
+- Colors: Inherit from text color
+
+## Accessibility
+
+### Focus States
+- Visible focus ring: `0 0 0 3px rgba(139, 185, 221, 0.4)`
+- Keyboard focus only (not mouse)
+
+### Color Contrast
+- AA compliance minimum
+- Text on colored backgrounds should maintain 4.5:1 ratio
+
+## Implementation Notes
+
+### CSS Variables
+Use CSS variables for all colors, spacing, and animation values to maintain consistency.
+
+### Shadows
+Layer multiple shadows for more realistic depth:
+```css
+box-shadow: 
+  0 1px 2px rgba(0, 0, 0, 0.03),
+  0 4px 8px rgba(0, 0, 0, 0.04),
+  0 8px 16px rgba(0, 0, 0, 0.04);
+```
+
+### Glassmorphism Effects
+For panels that need "floaty" glass effect:
+```css
+background: rgba(255, 255, 255, 0.8);
+backdrop-filter: blur(8px);
+border: 1px solid rgba(226, 232, 240, 0.8);
+```
+
+### Transitions
+Apply to all interactive elements:
+```css
+transition: all 0.3s ease;
+```
+
+
+## Dart General Guidelines
+
+### Basic Principles
+
+- Use English for all code and documentation.
+- Always declare the type of each variable and function (parameters and return value).
+- Avoid using any.
+- Create necessary types.
+- Don't leave blank lines within a function.
+- One export per file.
+
+### Nomenclature
+
+- Use PascalCase for classes.
+- Use camelCase for variables, functions, and methods.
+- Use underscores_case for file and directory names.
+- Use UPPERCASE for environment variables.
+- Avoid magic numbers and define constants.
+- Start each function with a verb.
+- Use verbs for boolean variables. Example: isLoading, hasError, canDelete, etc.
+- Use complete words instead of abbreviations and correct spelling.
+- Except for standard abbreviations like API, URL, etc.
+- Except for well-known abbreviations:
+- i, j for loops
+- err for errors
+- ctx for contexts
+- req, res, next for middleware function parameters
+
+### Functions
+
+- In this context, what is understood as a function will also apply to a method.
+- Write short functions with a single purpose. Less than 20 instructions.
+- Name functions with a verb and something else.
+- If it returns a boolean, use isX or hasX, canX, etc.
+- If it doesn't return anything, use executeX or saveX, etc.
+- Avoid nesting blocks by:
+- Early checks and returns.
+- Extraction to utility functions.
+- Use higher-order functions (map, filter, reduce, etc.) to avoid function nesting.
+- Use arrow functions for simple functions (less than 3 instructions).
+- Use named functions for non-simple functions.
+- Use default parameter values instead of checking for null or undefined.
+- Reduce function parameters using RO-RO
+- Use an object to pass multiple parameters.
+- Use an object to return results.
+- Declare necessary types for input arguments and output.
+- Use a single level of abstraction.
+
+### Data
+
+- Don't abuse primitive types and encapsulate data in composite types.
+- Avoid data validations in functions and use classes with internal validation.
+- Prefer immutability for data.
+- Use readonly for data that doesn't change.
+- Use as const for literals that don't change.
+
+### Classes
+
+- Follow SOLID principles.
+- Prefer composition over inheritance.
+- Declare interfaces to define contracts.
+- Write small classes with a single purpose.
+- Less than 200 instructions.
+- Less than 10 public methods.
+- Less than 10 properties.
+
+### Exceptions
+
+- Use exceptions to handle errors you don't expect.
+- If you catch an exception, it should be to:
+- Fix an expected problem.
+- Add context.
+- Otherwise, use a global handler.
+
+### Testing
+
+- Follow the Arrange-Act-Assert convention for tests.
+- Name test variables clearly.
+- Follow the convention: inputX, mockX, actualX, expectedX, etc.
+- Write unit tests for each public function.
+- Use test doubles to simulate dependencies.
+- Except for third-party dependencies that are not expensive to execute.
+- Write acceptance tests for each module.
+- Follow the Given-When-Then convention.
+
+## Specific to Flutter
+
+### Basic Principles
+
+- Use clean architecture
+- see modules if you need to organize code into modules
+- see controllers if you need to organize code into controllers
+- see services if you need to organize code into services
+- see repositories if you need to organize code into repositories
+- see entities if you need to organize code into entities
+- Use repository pattern for data persistence
+- see cache if you need to cache data
+- Use controller pattern for business logic with Riverpod
+- Use Riverpod to manage state
+- see keepAlive if you need to keep the state alive
+- Use freezed to manage UI states
+- Controller always takes methods as input and updates the UI state that effects the UI
+- Use getIt to manage dependencies
+- Use singleton for services and repositories
+- Use factory for use cases
+- Use lazy singleton for controllers
+- Use AutoRoute to manage routes
+- Use extras to pass data between pages
+- Use extensions to manage reusable code
+- Use ThemeData to manage themes
+- Use AppLocalizations to manage translations
+- Use constants to manage constants values
+- When a widget tree becomes too deep, it can lead to longer build times and increased memory usage. Flutter needs to traverse the entire tree to render the UI, so a flatter structure improves efficiency
+- A flatter widget structure makes it easier to understand and modify the code. Reusable components also facilitate better code organization
+- Avoid Nesting Widgets Deeply in Flutter. Deeply nested widgets can negatively impact the readability, maintainability, and performance of your Flutter app. Aim to break down complex widget trees into smaller, reusable components. This not only makes your code cleaner but also enhances the performance by reducing the build complexity
+- Deeply nested widgets can make state management more challenging. By keeping the tree shallow, it becomes easier to manage state and pass data between widgets
+- Break down large widgets into smaller, focused widgets
+- Utilize const constructors wherever possible to reduce rebuilds
+
+### Testing
+
+- Use the standard widget testing for flutter
+- Use integration tests for each api module.
