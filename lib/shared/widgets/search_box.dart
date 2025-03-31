@@ -49,6 +49,9 @@ class _SearchBoxState extends State<SearchBox> {
       ),
       child: TextField(
         controller: _searchController,
+        autocorrect: false,
+        enableSuggestions: false,
+        textCapitalization: TextCapitalization.none,
         decoration: InputDecoration(
           hintText: 'Search for a word...',
           prefixIcon: _isLoading
