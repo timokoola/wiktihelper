@@ -37,7 +37,7 @@ class SearchBox extends StatelessWidget {
               ? const SizedBox(
                   width: 20,
                   height: 20,
-                  child: CircularProgressIndicator(strokeWidth: 2),
+                  child: AiryLoadingIndicator(),
                 )
               : const Icon(Icons.search),
           border: OutlineInputBorder(
@@ -53,6 +53,80 @@ class SearchBox extends StatelessWidget {
         ),
         onSubmitted: onSearch,
       ),
+    );
+  }
+}
+
+class AiryLoadingIndicator extends StatefulWidget {
+  const AiryLoadingIndicator({Key? key}) : super(key: key);
+
+  @override
+  State<AiryLoadingIndicator> createState() => _AiryLoadingIndicatorState();
+}
+
+class _AiryLoadingIndicatorState extends State<AiryLoadingIndicator>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late List<Animation<double>> _animations;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1200),
+      vsync: this,
+    )..repeat();
+
+    _animations = List.generate(3, (index) {
+      return Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(
+          parent: _controller,
+          curve: Interval(
+            index * 0.2,
+            0.6 + index * 0.2,
+            curve: Curves.easeInOut,
+          ),
+        ),
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(3, (index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2),
+              child: Transform.translate(
+                offset: Offset(
+                  0,
+                  -4 * _animations[index].value,
+                ),
+                child: Container(
+                  width: 4,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary.withOpacity(
+                          0.3 + 0.7 * _animations[index].value,
+                        ),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
+            );
+          }),
+        );
+      },
     );
   }
 } 
